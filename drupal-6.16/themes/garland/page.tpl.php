@@ -50,6 +50,7 @@
         <?php if (isset($primary_links)) : ?>
           <?php print theme('links', $primary_links, array('class' => 'links primary-links')) ?>
         <?php endif; ?>
+        <?php var_dump($secondary_links); ?>
         <?php if (isset($secondary_links)) : ?>
           <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')) ?>
         <?php endif; ?>

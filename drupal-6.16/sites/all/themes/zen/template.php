@@ -508,7 +508,7 @@ function zen_preprocess_region(&$vars, $hook) {
   }
 
   // Setup the default template suggestion.
-  $vars['template_files'][] = $region;
+  $vars['template_files'][] = $region;   
 }
 
 /**

@@ -84,9 +84,37 @@ function mwc_theme(&$existing, $type, $theme, $path) {
  * @param $hook
  *   The name of the template being rendered (name of the .tpl.php file.)
  */
-/* -- Delete this line if you want to use this function
+//* -- Delete this line if you want to use this function
 function mwc_preprocess(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+ // $vars['sample_variable'] = t('Lorem ipsum.');
+ //var_dump($vars['template_files']);
+   //var_dump($vars['secondary_links']);
+
+}
+function _mwc_main_2style($menu){
+    $html  = '';      
+   if ( isset($menu)){
+       $count =0;
+       $dir   = _mwc_get_root_template();
+       foreach ($menu as $key => $item){
+            
+            if (stripos($key,'active-trail') !== false){
+                $current = "current";
+            }else{
+                $current = "";
+            }
+            $count++;
+            if ($count == 1)
+                $first = '<div class="na_home"><a class="'.$current.'"  href="'.$item['href'].'"><img src="'.$dir.'/css/img/home.png" alt="" /></a> </div>';
+            if ($count == 8)
+                $end = '<div class="na_kontakt">'.l($item['title'],$item['href'],array('attributes'=>array('class'=>$current))).'</div>';
+            if ($count != 1 && $count !=8){
+                $html .=  '<li  class="'.$current.'" >'.l($item['title'],$item['href'],array('attributes'=>array('class'=>$current))).'</li>';
+            }
+       }
+       $html = $first .'<div id="tabs7"><ul>'.$html.'</ul></div>'.$end;
+   }
+   return  $html ; 
 }
 // */
 
@@ -98,9 +126,26 @@ function mwc_preprocess(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
+//* -- Delete this line if you want to use this function
 function mwc_preprocess_page(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+  // How to get default directory  ?
+
+  $vars['directory_en'] = _mwc_get_root_template();
+
+  if (isset($vars['node']) && $vars['node']->type =='page') {
+     
+   $vars['template_files'][] = 'page-'. str_replace('_', '-', $vars['node']->type);
+  }
+  
+  $vars['secondary_html']= _mwc_main_2style($vars['secondary_links']);
+  //var_dump($vars['secondary_html']);
+}
+function _mwc_get_root_template(){
+  $directory     = drupal_get_path('theme','mwc');
+  $language_list = language_list();
+  $language_en   = $language_list['en'];
+  $directory_en  = url($directory,array('language'=>'$language_en'));
+  return  $directory_en;
 }
 // */
 
@@ -112,9 +157,9 @@ function mwc_preprocess_page(&$vars, $hook) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-/* -- Delete this line if you want to use this function
+//* -- Delete this line if you want to use this function
 function mwc_preprocess_node(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+  //$vars['sample_variable'] = t('Lorem ipsum.');
 
   // Optionally, run node-type-specific preprocess functions, like
   // mwc_preprocess_node_page() or mwc_preprocess_node_story().
@@ -124,7 +169,10 @@ function mwc_preprocess_node(&$vars, $hook) {
   }
 }
 // */
-
+function mwc_preprocess_node_page(&$vars, $hook){
+  $node = $vars['node'];
+  $vars['template_file'] = 'node-'. $node->nid;
+} 
 /**
  * Override or insert variables into the comment templates.
  *

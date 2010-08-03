@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+
+@media all
+{
+ /*------------------------------------------------------------------------------------------------------*/
+
+  /* Page margins and background | Randbereiche & Seitenhintergrund */
+  body { width:100%; color:#333435; background:#575757}
+
+  /* Layout: Width, Background, Border | Layout: Breite, Hintergrund, Rahmen */
+  #page{ width:100%;}
+  #page_margin{ width:100%; background:#fff url(../../img/bg.jpg) repeat-x top left;}
+  #page_bot{ width:100%; background:url(../../img/bg_bot.jpg) repeat-x bottom left; position:relative; z-index:0;}
+  
+  .w950{ width:950px; margin:0px auto; z-index:0;}
+
+  /* Design of the Main Layout Elements | Gestaltung der Hauptelemente des Layouts */
+  #header { width:950px; margin:0px auto; height:105px; z-index:0;}
+  	.logo{ float:left; padding-top:27px;}
+	.card{ float:right; padding-top:27px;}
+		.card_shop1{}
+  .bg_flash{ width:956px; height:251px; margin:0px auto; background:url(../../img/bg_flash.jpg) no-repeat top left; text-align:center; z-index:0;}
+  	.flash{ padding:0px;}
+  .banner_top{width:950px; margin:0px auto; z-index:0px;}
+  #banner{ width:100%; background:#f1f1f1 url(../../img/bg_1.jpg) repeat-x top left; border-top:solid 1px #e9e9e9; border-bottom:solid 1px #e9e9e9; z-index:0;}
+  	#banner_content{ width:1010px; margin:0px auto; height:146px; background:url(../../img/bg_main_banner.png) no-repeat top left; z-index:0;}
+		
+		
+	
+  #navi { width:950px; height:58px; margin:0px auto; background:url(../../img/bg_navi.png) no-repeat top left; padding:2px 30px 0px 30px;}
+
+  #main { width:950px; margin:0px auto; padding:13px 0px; z-index:0;} 	
+  
+  #bg_main_bot{ width:100%; background-color:#575757; padding:15px 0px 8px 0px; margin:0px auto; color:#fff; z-index:0;}
+	
+  #footer { width:100%; height:40px; padding-top:23px; background:url(../../img/bg_footer.jpg) repeat-x top left; color:#fff;}
+
+ /*------------------------------------------------------------------------------------------------------*/
+
+ /**
+  * Formatting of the Content Area | Formatierung der Inhaltsbereichs
+  *
+  * @section layout-main
+  */
+
+  .col1 { float:left;}
+  .col1_content {  }
+
+  .col2 { float:right;}
+  .col2_content {  }
+
+  .col3 { float:left;}
+  .col3_content {  }
+
+
+ /*------------------------------------------------------------------------------------------------------*/
+
+ /**
+  * Design of Additional Layout Elements | Gestaltung weiterer Layoutelemente
+  *
+  * @section layout-misc
+  */
+
+
+}

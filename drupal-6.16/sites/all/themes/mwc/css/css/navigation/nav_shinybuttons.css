@@ -1,0 +1,58 @@
+ #tabs7 {
+      float:left;
+	  padding:0px;
+      width:750px;
+      background:url(../../img/line_navi.png) no-repeat top left;
+	  line-height:45px;
+	  font-family:Arial, Helvetica, sans-serif;
+	  font-size:16px;
+	  line-height:normal;
+	  color:#fff;
+	  font-stretch:condensed;
+	  
+      }
+    #tabs7 ul {
+          margin:0;
+          padding:0;
+          list-style:none;
+      }
+    #tabs7 li {
+      display:inline;
+	  float:left;
+      margin:0px;
+	  padding:0px;
+	  background:url(../../img/line_navi.png) no-repeat top right;
+	  line-height:45px;	  
+      }
+    #tabs7 a {
+      float:left;
+	  cursor:hand;
+      margin:0;
+      padding:0 31px 0 31px;
+      text-decoration:none;
+	  color:#fff;
+      }
+    
+    #tabs7 a:hover {
+      background-position:0% -50px;
+	  background:url(../../img/navi_hover.png) repeat-x top center;
+	  color:#fff; text-decoration:none;
+      }
+    
+    #tabs7 .current a {
+	   background:url(../../img/navi_active.png) repeat-x left top;
+	   background-position:0% 0px;
+	   color:#fd9f00; text-decoration:none;
+      }
+	  
+	  
+	.na_home{ width:62px; height:16px; text-align:center; float:left; padding:14px 0px;}
+	  	.na_home a{ padding:21px 21px 13px 21px;}
+		*+html .na_home a{ padding:13px 21px 29px 21px;}
+		.na_home a:hover{ background:url(../../img/home_hover.png) no-repeat top left;}
+		.na_home .current{ background:url(../../img/home_active.png) no-repeat top left;}
+	.na_kontakt{ width:138px; height:21px; text-align:center; float:right; padding:12px 0px; margin-top:1px;}
+	  	.na_kontakt a{ padding:12px 30px 15px 31px; font-size:16px; color:#fff;}
+		.na_kontakt a:hover{ background:url(../../img/hover_kontakt.png) no-repeat top left; color:#fff; text-decoration:none;}
+		.na_kontakt .current{ background:url(../../img/kontakt_active.png) no-repeat top left; color:#fd9f00; text-decoration:none;}
+      

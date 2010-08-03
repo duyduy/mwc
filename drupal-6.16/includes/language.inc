@@ -104,7 +104,7 @@ function language_from_browser() {
  */
 function language_url_rewrite(&$path, &$options) {
   global $language;
-
+  
   // Only modify relative (insite) URLs.
   if (!$options['external']) {
 
