@@ -173,6 +173,7 @@ function mwc_preprocess_node_page(&$vars, $hook){
   $node = $vars['node'];
   $vars['template_file'] = 'node-'. $node->nid;
 } 
+
 /**
  * Override or insert variables into the comment templates.
  *
@@ -200,3 +201,51 @@ function mwc_preprocess_block(&$vars, $hook) {
   $vars['sample_variable'] = t('Lorem ipsum.');
 }
 // */
+
+
+function phptemplate_preprocess_page(&$vars){
+ $css = $vars['css'];
+ //var_dump($css);
+ 
+ 
+ 
+ unset($css['all']['module']['profiles/uberdrupal/modules/admin_menu/admin_menu.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/cck/theme/content-module.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/filefield/filefield.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/lightbox2/css/lightbox.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_attribute/uc_attribute.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_order/uc_order.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_product/uc_product.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_store/uc_store.css']);
+ unset($css['all']['module']['sites/all/modules/ckeditor/ckeditor.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_catalog/uc_catalog.css']);
+ unset($css['all']['module']['profiles/uberdrupal/modules/ubercart/uc_cart/uc_cart_block.css']);
+ 
+ 
+ unset($css['all']['theme']['sites/all/themes/zen/style.css']); 
+ unset($css['all']['theme']['sites/all/themes/mwc/css/html-reset.css']);
+ 
+ unset($css['all']['theme']['sites/all/themes/mwc/css/wireframes.css']); 
+ unset($css['all']['theme']['sites/all/themes/mwc/css/page-backgrounds.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/tabs.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/messages.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/pages.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/block-editing.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/blocks.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/navigation.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/panels-styles.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/views-styles.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/nodes.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/comments.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/forms.css']);
+ unset($css['all']['theme']['sites/all/themes/mwc/css/fields.css']);
+
+ unset($css['print']['theme']['sites/all/themes/mwc/css/print.css']);
+ 
+ unset($css['all']['module']['modules/node/node.css']);
+ unset($css['all']['module']['modules/system/system-menus.css']);
+ unset($css['all']['module']['modules/user/user.css']);
+ unset($css['all']['module']['modules/system/system.css']);
+ unset($css['all']['module']['modules/system/defaults.css']);
+ $vars['styles'] = drupal_get_css($css);
+}

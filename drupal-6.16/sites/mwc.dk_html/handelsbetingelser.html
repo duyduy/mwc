@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="img/favicon.ico" />
+<!-- JQuery -->
+<script type="text/javascript" src="Scripts/jquery.js"></script>
+<script type="text/javascript">
+google.load("jquery", "1"); 
+
+</script>
+<script type="text/javascript">
+	//<![CDATA[
+	function showSlidingDiv(){
+		if($("#slidingDiv_child").css("display") != "none") $("#slidingDiv_child").css("display","none");
+		$("#slidingDiv").animate({"width": "toggle"}, { duration: 1000,
+														complete: function() {
+													  		$("#slidingDiv_child").fadeIn("fast");
+														}
+ 		});		
+	}
+	//]]>
+	//<![CDATA[
+	function showSlidingDiv1(){
+		if($("#slidingDiv_child1").css("display") != "none") $("#slidingDiv_child1").css("display","none");
+		$("#slidingDiv1").animate({"width": "toggle"}, { duration: 1000,
+														complete: function() {
+													  		$("#slidingDiv_child1").fadeIn("fast");
+														}
+ 		});	
+	}
+	//]]>
+	//<![CDATA[
+	function showSlidingDiv2(){
+		if($("#slidingDiv_child2").css("display") != "none") $("#slidingDiv_child2").css("display","none");
+		$("#slidingDiv2").animate({"width": "toggle"}, { duration: 1000,
+														complete: function() {
+													  		$("#slidingDiv_child2").fadeIn("fast");
+														}
+ 		});	
+	}
+	//]]>
+</script>
+<!-- List images -->
+<script type="text/javascript" src="Scripts/list_images.js"></script>
+<script language="javascript">
+	jQuery(document).ready(function(){
+		jQuery("#mycarousel").jCarouselLite({
+			btnNext: ".next",
+			btnPrev: ".prev",
+			visible : 3,
+			scroll: 1,
+			speed : 400
+		});						
+	});	
+</script>
+<title>My Web Creations - Handelsbetingelser Page</title>
+</head>
+<body>
+<!-- begin: #Page -->
+<div id="page">
+	<!-- begin: #Page_margin -->
+	<div id="page_margin">
+    <!-- begin: #Page_bot -->
+	<div id="page_bot">
+    	<!-- begin: #tipeven -->
+    	<div class="tipeven">
+            <div id="slidingDiv">
+            	<div id="slidingDiv_child" style="display:none">
+                <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. </p>
+                <input type="text" value="Indtast Email Adresse......" class="input1" /><br />
+                <a href="#"><img src="img/bt_send.png" alt="" /></a>
+                </div>
+            </div>
+            <div class="float_left">
+                <a href="#" onClick="showSlidingDiv(); return false;"><img src="img/tt_tipenven.png" alt="" /></a>
+            </div>
+            <div class="clear_left"></div>
+        </div>
+        <!-- end: #tipeven -->
+        <!-- begin: #nyhedesbrev -->
+    	<div class="nyhedesbrev">
+            <div id="slidingDiv1">
+            	<div id="slidingDiv_child1" style="display:none">
+                <p>Jeg vil til-/afmelde mig My Web Creations nsnyhedsbrev:</p>
+                <input type="text" value="Indtast Din Email Adresse......" class="input1" /><br />
+                <a href="#"><img src="img/bt_tilmeld.png" alt="" /></a>
+                <a href="#"><img src="img/bt_afmeld.png" alt="" /></a>
+                </div>
+            </div>
+            <div class="float_left">
+                <a href="#" onClick="showSlidingDiv1(); return false;"><img src="img/bt_nyhedesbrev.png" alt="" /></a>
+            </div>
+            <div class="clear_left"></div>
+        </div>
+        <!-- end: #nyhedesbrev -->
+        <!-- begin: #feedback -->
+    	<div class="feedback">
+        	<a href="feedback.html"><img src="img/tt_feedback.png" alt="" /></a>
+        </div>
+        <!-- end: #feedback -->
+        <!-- begin: #kontakt -->
+    	<div class="kontakt">
+        	<a href="kontakt.html"><img src="img/tt_kontakt.png" alt="" /></a>
+        </div>
+        <!-- end: #kontakt -->
+        <!-- begin: #livesupport -->
+    	<div class="livesupport">
+        	<a href="#"><img src="img/tt_livesupport.png" alt="" /></a>
+        </div>
+        <!-- end: #livesupport -->
+        <!-- begin: #sitemap -->
+    	<div class="sitemap">
+        	<a href="sitemap.html"><img src="img/bt_sitemap.png" alt="" /></a>
+        </div>
+        <!-- end: #sitemap -->
+        <!-- begin: #skype -->
+    	<div class="skype">
+            <div id="slidingDiv2">
+            	<div id="slidingDiv_child2" style="display:none">
+                <div class="bd1b p15t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Kim Hau Tran</a><br />
+                        Director
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="bd1b p10t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="img/skype_off.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">My Linh Lao</a><br />
+                        Director
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="bd1b p10t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Truong Phuc To</a><br />
+                        Office Manager
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="p10t">
+                	<div class="float_left m5l"><a href="#"><img src="img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Van Trung Huynh</a><br />
+                        Design Leader
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                </div>
+            </div>
+            <div class="float_right">
+                <a href="#" onClick="showSlidingDiv2(); return false;"><img src="img/skype.png" alt="" /></a>
+            </div>
+            <div class="clear_right"></div>
+        </div>
+        <!-- end: #skype -->
+        <!-- begin: #Flag -->
+    	<div class="flag">
+            <a href="#"><img src="img/flag.jpg" alt="" /></a>
+        </div>
+        <!-- end: #Flag -->
+        <!-- begin: #Header -->
+        <div id="header">
+            <div class="logo"><a href="index.html" class="current"><img src="img/logo.png" alt="" /></a></div>
+            <div class="card">
+            	<div class="card_shop1"><img src="img/card_shop.jpg" alt="" /></div>
+                <p class="p5t blue">
+                	<img src="img/icon.png" alt="" />
+                    <a href="indkobskurven.html"><b>Indkøbskurven</b></a>
+                </p>
+                <p class="p5t">
+                	Du har : <span class="blue">0</span>&nbsp;&nbsp; | &nbsp;
+                    Total :  <span class="blue">DKK 3495,- </span>
+                </p>
+            </div>
+            <div class="card m10r">
+            	<div class="card_shop1"><img src="img/card_shop1.png" alt="" /></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- end: #Header -->
+        <!-- begin: #Navigation -->
+        <div id="navi">
+        	<div class="na_home">
+            	<a href="index.html"><img src="img/home.png" alt="" /></a>
+            </div>
+        	<div id="tabs7">
+                <ul>                                                                                  
+                                    <!-- CSS Tabs -->
+                    <li><a href="produkter.html">Produkter</a></li>
+                    <li><a href="kunder.html">Kunder</a></li>
+                    <li><a href="referencer.html">Referencer</a></li>
+                    <li><a href="ydelser.html">Ydelser</a></li>
+                    <li><a href="kompetencer.html">Kompetencer</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                </ul>
+            </div>
+            <div class="na_kontakt"><a href="kontakt.html">Kontakt Os</a></div>
+            <div class="clear_left"></div>
+        </div>
+        <!-- end: #Navigation -->
+        <!-- begin: #banner -->
+        <div class="banner_top">
+        	<img src="img/img_kontakt.jpg" alt="" />
+        </div>
+        <!-- end: #banner -->
+        <!-- begin: #Main -->
+        <div id="main">
+        	<div class="bg_tt_kontakt">
+            	<p class="title3">Handelsbetingelser</p>
+            </div>
+            <div class="p15t">
+            	Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.<br /><br />
+                Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til samme nligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien.<br /><br />
+				<p class="tt_profil">Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p><br /><br /> 
+                Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. <br /><br />
+                Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien.<br /><br /> 
+                Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.<br /><br /> 
+                <p class="tt_profil">Lorem Ipsum har været standard fyldtekst siden 1500-tallet</p><br /><br /> 
+                Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien.<br /><br /> 
+				Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer.
+            </div>
+            
+            <div class="bg_bt"><a href="kontakt.html" class="button3"></a></div>
+        </div>
+        <!-- end: #Main -->
+    </div>
+	<!-- end: #Page_bot -->
+    </div>
+	<!-- end: #Page_margin -->
+    <div id="bg_main_bot">
+    	<div class="w950">
+        	<div class="bg_col1">
+            	<p class="title">Vedrører kategori</p>
+                <ul class="list_2">
+                	<li><a href="referencer_logo.html">- Logo design</a></li>
+                    <li><a href="referencer_brochure.html">- Brochure</a></li>
+                    <li><a href="referencer_banner.html">- Banner</a></li>
+                    <li><a href="referencer_flashbanner.html">- Flashbanner</a></li>
+                    <li style="border:none;"><a href="referencer_visitkort.html">- Visitkort</a></li>
+                </ul>
+            </div>
+            <div class="bg_col1 m10l">
+            	<p class="title">Teknologi beskrivelse</p>
+                <ul class="list_2">
+                	<li><a href="kompetencer.html#teknologi">- Joomla</a></li>
+                    <li><a href="kompetencer.html#teknologi">- CodeInigter</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Zend Framwork</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Prado</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Drupal</a></li>
+                    <li><a href="kompetencer.html#teknologi">- OpenCart</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Wordpress</a></li>
+                	<li style="border:none;"><a href="kompetencer.html#teknologi">- Magento</a></li>
+                </ul>
+            </div>
+            <div class="bg_col1 m10l">
+            	<p class="title">Design</p>
+                <ul class="list_2">
+                	<li><a href="kompetencer.html#design">- Adobe Photoshop</a></li>
+                    <li><a href="kompetencer.html#design">- Dreamweaver</a></li>
+                    <li><a href="kompetencer.html#design">- Adobe Illustration</a></li>
+                    <li><a href="kompetencer.html#design">- CorelDraw</a></li>
+                    <li><a href="kompetencer.html#design">- Flash</a></li>
+                    <li style="border:none;"><a href="kompetencer.html#design">- Html</a></li>
+                </ul>
+            </div>
+            <div class="w290 float_right">
+            	<div class="bd1b p10b"><img src="img/tt_lej.png" alt="" /></div>
+                <div class="bg_text_1">
+                	<p class="p10t">
+                    	Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrienLorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en.
+                    </p>
+                    <div class="m10t"><a href="produkter_webfreelancere.html" class="button2"></a></div>
+                	<div class="img_ab"><img src="img/icon_ps.png" alt="" /></div>
+                </div>
+                <div class="clear_right"></div>
+            </div>
+            <div class="clear"></div>            
+        </div>
+    </div>
+    <!-- begin: #Footer -->
+    <div id="footer">
+    	<div class="w950">
+            Copyright © 2010 <a href="http://www.mywebcreations.dk" target="_blank">MYWEBCREATIONS.DK.</a> All rights reserved.
+        </div>
+    </div>
+    <!-- end: #Footer -->
+</div>
+<!-- end: #Page -->
+</body>
+</html>

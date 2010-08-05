@@ -37,12 +37,12 @@ if (!isset($_POST)) {
   
   $methods = services_get_all();
   services_strip_hashes($methods);
-  $request = drupal_parse_json($_POST['method']);    
+  $request = drupal_parse_json($_POST['method']);   
   
   $args = array();
   
-  foreach ($methods as $method) {         
-    if ($method['method'] == $request) {         
+  foreach ($methods as $method) {        
+    if ($method['method'] == $request) {          
       unset($_POST['q']);
       unset($_POST['method']);
       $args = array();
