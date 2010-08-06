@@ -22,13 +22,13 @@ function mwc_service_service() {
 
     // node.get
     array(
-      '#method'           => 'mwc.get',
-      '#callback'         => 'mwc_service_get',
-      '#access callback'  => 'mwc_service_get_access',
+      '#method'           => 'mwc.contact',
+      '#callback'         => 'mwc_service_contact',
+      '#access callback'  => 'mwc_service_contact_access',
       '#file'             => array('file' => 'inc', 'module' => 'mwc_service'),
       '#args'             => array(
         array(
-          '#name'           => 'nid',
+          '#name'           => 'task',
           '#type'           => 'int',
           '#description'    => t('A node ID.')),
         array(

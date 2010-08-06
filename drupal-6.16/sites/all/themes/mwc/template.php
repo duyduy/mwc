@@ -134,7 +134,8 @@ function mwc_preprocess_page(&$vars, $hook) {
 
   if (isset($vars['node']) && $vars['node']->type =='page') {
      
-   $vars['template_files'][] = 'page-'. str_replace('_', '-', $vars['node']->type);
+    $vars['template_files'][] = 'page-'. str_replace('_', '-', $vars['node']->type);
+    $vars['template_files'][] = 'page-'. str_replace('_', '-', $vars['node']->type).'-'. $vars['node']->nid;
   }
   
   $vars['secondary_html']= _mwc_main_2style($vars['secondary_links']);
@@ -172,6 +173,7 @@ function mwc_preprocess_node(&$vars, $hook) {
 function mwc_preprocess_node_page(&$vars, $hook){
   $node = $vars['node'];
   $vars['template_file'] = 'node-'. $node->nid;
+  $vars['directory_en'] = _mwc_get_root_template();
 } 
 
 /**

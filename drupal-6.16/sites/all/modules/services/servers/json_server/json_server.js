@@ -2,6 +2,7 @@
 
 /**
  *  Convert a variable to a json string.
+ *  DuyDuy - Fix bad json case object in funtion toJson.
  */
 Drupal.toJson = function(v) {
   switch (typeof v) {
@@ -14,7 +15,10 @@ Drupal.toJson = function(v) {
     case 'object':
       var output = "{";
       for(i in v) {
-        output = output + i + ":" + Drupal.toJson(v[i]) + ",";
+        output = output + '"' + i + '"' + ":" + Drupal.toJson(v[i]) + ",";
+      }
+	  if (output[output.length - 1] == ',') {
+            output = output.substring(0, output.length - 1);
       }
       output = output + "}";
       return output;
@@ -22,7 +26,6 @@ Drupal.toJson = function(v) {
       return 'null';
   }
 };
-
 /**
  *  A JavaScript implementation for interacting with services.
  */
