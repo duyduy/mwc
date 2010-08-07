@@ -90,7 +90,9 @@
 //  4.Advance extra function : serializeObject
 function set_click_for_each_form(){
 	$("#button-send").click(function(){
-	   get_variable_and_sent_to_server_json('contact-form');
+       if ($('#contact-form').valid() == true)
+            _extra_show_message('contact-form'); 
+	   //get_variable_and_sent_to_server_json('contact-form');
 	   return false;
 	});
 	$("#button-reset").click(function(){
@@ -98,13 +100,17 @@ function set_click_for_each_form(){
 	   return false;
 	});
 	$("#button-bestil").click(function(){
-	   get_variable_and_sent_to_server_json('bestil-form');
+      if ($('#bestil-form').valid() == true)
+              _extra_show_message('bestil-form'); 
+	  // get_variable_and_sent_to_server_json('bestil-form');
 	   return false;
 	});
 	
 }
 function get_variable_and_sent_to_server_json(idForm){
     var data = {};
+    var options = {}; 
+    var html_message = 'Tak for din henvendelse! <br/>Vi vil kontakte dig hurtigst muligt <br/>Med venlig hilsen ';
 	data.fields = $('#'+idForm).serializeArray();
 	if (idForm =='contact-form'){data.task = '1';}
 	if (idForm =='bestil-form') {data.task = '2';}
@@ -113,35 +119,116 @@ function get_variable_and_sent_to_server_json(idForm){
 				  alert("Fatal error: could not load content");
 		   }
 		   else {
+               
+                    if (data.Task =='Contact-form'){ 
+                        $('#contact-div').hide('pulsate',options,500,function(){
+                            
+                            $('#contact-div').html(html_message).css('opacity',1).show('blind',options,1000);
+                        })
+                    }
+                    if (data.Task =='Bestil-information'){ 
+                        $('#bestil-div').hide('pulsate',options,500,function(){
+                            
+                            $('#bestil-div').html(html_message).css('opacity',1).show('blind',options,1000);
+                        })
+                    }
+              
 		   }
 	});	 
 }
-function _extra_validate(){}
-function _extra_show_message(){}
- function load_content(task){
-    data = {fields: ["nid", "title", "body"]};
-	data.task = task;
-	data.fields = $('#contact-form').serializeArray();
- 	Drupal.service('mwc.contact',data,function(status, data) {
-       if(status == false) {
-			  alert("Fatal error: could not load content");
-	   }
-	   else {
-	       //alert(data.nid + data.body);
-		   var html ='';
-		   html  = '<div class="bg_tt_profil"><p class="title3">'+data.title+'</p></div>';
-		   html += data.body;
-		   if (data.nid == 13 ){
-		      html += '<br class="clear_left" /><div class="m15t p15b"><a href="kontakt.html" class="button3"></a></div>'; 
-		   }
-		   
-		   //$("#load-content").html(html);
-		   effect_extra(html);
-	   }
-    });	    
- }
+function _extra_validate(){
+                                   
+                            $("#contact-form").validate({
+                                        errorPlacement: function(error, element) {
+                                            //element.hide();
+                                        },
+                                        showErrors:function(errorMap,errorList){},
+                                        invalidHandler: function(form, validator) {
+                                            var invalid = validator.errorMap;
+                                            var count = 0;
+                                            for(key in invalid) {
+                                             if (count ==0){
+                                                     //
+                                                    if (key =='desc'){
+                                                       alert($("textarea[name='"+key+"']").prev().html().replace(/:/,'')+" skal udfyldes!");
+                                                    }else{
+                                                    
+                                                       alert($("input[name='"+key+"']").prev().html().replace(/:/,'')+" skal udfyldes!");   
+                                                    }
+                                                    
+                                             }
+                                             count++;
+                                            }
+
+                                        }                                                                                
+                                    });
+                            $('.effect-focus').focus(function(){
+                                var message = $(this).attr('value'); 
+                                $(this).attr('value','');
+                            });
+                            
+                            $('.effect-focus').each(function(){
+                                var message =  $(this).attr('value');
+                                $(this).bind('blur', {msg: message}, function(event) {
+                                    if ($(this).attr('value') =='') 
+                                        $(this).attr('value',event.data.msg);
+                                    
+                                });
+                            });
+                            
+                            $("#bestil-form").validate({
+                                        errorPlacement: function(error, element) {
+                                            //element.hide();
+                                        },
+                                        showErrors:function(errorMap,errorList){},
+                                        invalidHandler: function(form, validator) {
+                                            var invalid = validator.errorMap;
+                                            var count = 0;
+                                            for(key in invalid) {
+                                             if (count ==0){
+                                                     //
+                                                    if (key =='desc'){
+                                                       alert($("textarea[name='"+key+"']").prev().html().replace(/:/,'')+" skal udfyldes!");
+                                                    }else{
+                                                    
+                                                       alert($("input[name='"+key+"']").prev().html().replace(/:/,'')+" skal udfyldes!");   
+                                                    }
+                                                    
+                                             }
+                                             count++;
+                                            }
+
+                                        }                                                                                
+                                    });
+}
+function _extra_show_message(idForm){
+   var options = {};   
+   if (idForm =='contact-form'){
+        $("#button-send").hide('explode',options,500);
+        $("#button-reset").hide('explode',options,500,function(){
+            $('#contact-form').parent().parent().attr('id','contact-div').hide('blind',options,1500,function(){
+                $('#contact-div').html('Loading ...').show('blind',options,1000,function(){
+                    get_variable_and_sent_to_server_json(idForm); 
+                });
+                 
+            })
+        }); 
+   }
+   if (idForm =='bestil-form') {
+       $("#button-bestil").hide('explode',options,500,function(){
+            $('#bestil-form').parent().attr('id','bestil-div').hide('blind',options,1500,function(){
+                 $('#bestil-div').html('Loading ...').show('blind',options,1000,function(){
+                    get_variable_and_sent_to_server_json(idForm); 
+                });           
+            })
+       });
+   } 
+   
+}
+ 
  $(function(){
  	 set_click_for_each_form();
+     _extra_validate();
  });
 
 </script>
@@ -158,15 +245,15 @@ function _extra_show_message(){}
                         <div class="input_form p10t">
 						  <form action="" id="contact-form"> 
                         	<label class="w115">Kontaktperson:</label>
-                            <input type="text" value="" class="w245" name="person" /><br />
+                            <input type="text" value="" class="w245 required " name="person" /><br />
                             <label class="w115">Email:</label>
-                            <input type="text" value="" class="w245" name="email" /><br />
+                            <input type="text" value="" class="w245 required email" name="email" /><br />
                             <label class="w115">Firma/navn:</label>
-                            <input type="text" value="" class="w245" name="name"/><br />
+                            <input type="text" value="" class="w245 required " name="name"/><br />
                             <label class="w115">Emne:</label>
-                            <input type="text" value="" class="w245" name="subject"/><br />
+                            <input type="text" value="" class="w245 required " name="subject"/><br />
                             <label class="w115">Din besked:</label>
-                            <textarea class="w245 h80" name="desc"></textarea><br />
+                            <textarea class="w245 h80 required " name="desc"></textarea><br />
                             <label class="w115">&nbsp;</label>
                             <a href="#" id="button-send" class="bt_send float_left"></a>
                             <a href="#" id="button-reset" class="bt_nulstil float_left m5l"></a><br class="clear_left" />
@@ -200,10 +287,10 @@ function _extra_show_message(){}
                         </div>
                         <div class="w228 float_right">
                         	<div class="input_form">
-                            	<input name="name"  type="text" value="indtat navn" class="w220" /><br />
-                                <input name="phone" type="text" value="indtat telefonnumber" class="w220" /><br />
-                                <input name="email" type="text" value="indtat email" class="w220" /><br />
-                                <input name="post"  type="text" value="indtat postnr" class="w220" /><br />
+                            	<input name="name"  type="text" value="indtat navn" class="w220 effect-focus" /><br />
+                                <input name="phone" type="text" value="indtat telefonnumber" class="w220 effect-focus" /><br />
+                                <input name="email" type="text" value="indtat email" class="w220 effect-focus required email" /><br />
+                                <input name="post"  type="text" value="indtat postnr" class="w220 effect-focus" /><br />
                                 <select class="w225" name="hear">
                                 	<option>Hvor har du hørt om os?</option>
                                 </select><br />

@@ -88,8 +88,10 @@ function mwc_theme(&$existing, $type, $theme, $path) {
 function mwc_preprocess(&$vars, $hook) {
  // $vars['sample_variable'] = t('Lorem ipsum.');
  //var_dump($vars['template_files']);
-   //var_dump($vars['secondary_links']);
-
+ //var_dump($vars['secondary_links']);
+ $dir =  drupal_get_path("theme", "mwc");
+ drupal_add_js($dir.'/js/mwc.js');
+ drupal_add_js($dir.'/js/jquery.validate.pack.js');
 }
 function _mwc_main_2style($menu){
     $html  = '';      

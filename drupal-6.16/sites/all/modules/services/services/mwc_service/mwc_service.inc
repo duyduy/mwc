@@ -104,12 +104,12 @@ function mwc_service_view_access($nid) {
 }
 
 function _mwc_contact($fields = array()){
-    var_dump($fields);
+    //var_dump($fields);
     $result = array('Task'=>'Contact-form','return'=>true)  ;
     return  $result; 
 }
 function _mwc_bestil_information($fields = array()){
-    var_dump($fields); 
+    //var_dump($fields); 
     $result = array('Task'=>'Bestil-information','return'=>true)  ;   
     return  $result; 
 }
