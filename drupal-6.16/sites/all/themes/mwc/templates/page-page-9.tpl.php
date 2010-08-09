@@ -128,33 +128,37 @@
 	<div id="page_bot">
     	<!-- begin: #tipeven -->
     	<div class="tipeven">
-            <div id="slidingDiv">
-            	<div id="slidingDiv_child" style="display:none">
+           <form action="" id="tell-a-friend-form" > 
+            <div id="tell-a-friend">
+            	<div id="tell-a-friend-child" style="display:none">
                 <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. </p>
-                <input type="text" value="Indtast Email Adresse......" class="input1" /><br />
-                <a href="#"><img src="<?php print $directory_en ; ?>/css/img/bt_send.png" alt="" /></a>
+                <input name="tellAFriend" type="text" value="Indtast Email Adresse......" class="input1 required email" /><br />
+                <a href="#" id="button-tell-a-friend-child"><img src="<?php print $directory_en ; ?>/css/img/bt_send.png" alt="" /></a>
                 </div>
             </div>
             <div class="float_left">
                 <a href="#" onClick="showSlidingDiv(); return false;"><img src="<?php print $directory_en ; ?>/css/img/tt_tipenven.png" alt="" /></a>
             </div>
             <div class="clear_left"></div>
+            </form>
         </div>
         <!-- end: #tipeven -->
         <!-- begin: #nyhedesbrev -->
     	<div class="nyhedesbrev">
+           <form action="" id="newsletter-form" >   
             <div id="slidingDiv1">
             	<div id="slidingDiv_child1" style="display:none">
                 <p>Jeg vil til-/afmelde mig My Web Creations nsnyhedsbrev:</p>
-                <input type="text" value="Indtast Din Email Adresse......" class="input1" /><br />
-                <a href="#"><img src="<?php print $directory_en ; ?>/css/img/bt_tilmeld.png" alt="" /></a>
-                <a href="#"><img src="<?php print $directory_en ; ?>/css/img/bt_afmeld.png" alt="" /></a>
+                <input type="text" name="newsletter" value="Indtast Din Email Adresse......" class="input1 required email" /><br />
+                <a href="#" id="button-newsletter-reg"><img src="<?php print $directory_en ; ?>/css/img/bt_tilmeld.png" alt="" /></a>
+                <a href="#" id="button-newsletter-not-reg"><img src="<?php print $directory_en ; ?>/css/img/bt_afmeld.png" alt="" /></a>
                 </div>
             </div>
             <div class="float_left">
                 <a href="#" onClick="showSlidingDiv1(); return false;"><img src="<?php print $directory_en ; ?>/css/img/bt_nyhedesbrev.png" alt="" /></a>
             </div>
             <div class="clear_left"></div>
+           </form>
         </div>
         <!-- end: #nyhedesbrev -->
         <!-- begin: #feedback -->
