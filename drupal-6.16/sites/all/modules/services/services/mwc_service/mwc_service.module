@@ -40,7 +40,22 @@ function mwc_service_service() {
       '#help'             => t('Returns a node data.')),
     
     // node.view
-
+    array(
+      '#method'           => 'mwc.referencer',
+      '#callback'         => 'mwc_service_referencer',
+      '#access callback'  => 'mwc_service_referencer_access',
+      '#file'             => array('file' => 'inc', 'module' => 'mwc_service'),
+      '#args'             => array(
+        array(
+          '#name'           => 'idTerm',
+          '#type'           => 'int',
+          '#description'    => t('A term ID.')),
+        array(
+          '#name'           => 'page',
+          '#type'           => 'int',
+          '#description'    => t('A paging .'))),
+      '#return'           => 'struct',
+      '#help'             => t('Returns a node data.')),
     
     // node.save
    

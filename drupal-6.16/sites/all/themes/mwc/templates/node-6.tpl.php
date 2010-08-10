@@ -79,6 +79,7 @@
   $path = drupal_get_path("theme", "mwc");
   drupal_add_js($path ."/js/jquery-ui-1.7.3.custom/jquery-ui-1.7.3.custom.min.js");
   drupal_add_js($path ."/js/sliding_effect.js");
+  drupal_add_js($path ."/js/jquery.flip.min.js");
 ?>
 <?php
 
@@ -94,7 +95,12 @@
     var dataConfig = {} ;
 	function data_init(){
 		$('.bg_referencer ').each(function(index){
-			$(this).attr('id','referencer-'+index);
+			$(this).attr('id','referencer-'+index).find('a').each(function(sindex){
+				$(this).attr('id','a-referencer-'+sindex).click(function(){
+					 alert('abc');
+					 return false;
+				});
+			});
 			
 		});		
 	}
@@ -102,11 +108,51 @@
 	
 	}
 	function show_all_taxonomy(){}
-	function show_one_taxonomy(){}
+	function show_one_taxonomy(idTerm){
+		
+	}
+	function _get_all_nodes_in_term(data){
+        //var data = {};
+        //data.idTerm = 2;
+        //data.page   = 1;  
+	    Drupal.service('mwc.referencer',data,function(status, data) {
+               if(status == false) {
+                      alert("Fatal error: could not load content");
+               }
+               else {
+                   
+                        if (data.Task =='Contact-form'){ 
+                            $('#contact-div').hide('pulsate',options,500,function(){
+                                
+                                $('#contact-div').html(html_message).css('opacity',1).show('blind',options,1000);
+                            })
+                        }
+                        if (data.Task =='Bestil-information'){ 
+                            $('#bestil-div').hide('pulsate',options,500,function(){
+                                
+                                $('#bestil-div').html(html_message).css('opacity',1).show('blind',options,1000);
+                            })
+                        }
+                  
+               }
+        });
+	}
 	function _get_nodes_reference(){}
-	function _extra_effect(){
+	//var data = {'index':0};
+	function _extra_effect(data){
 	  // Explore all category sub special category
-	  $('#referencer-3').effect("transfer",{ to: $("#title-effect") }, 1000);
+	  data.index = 3;
+	  $('.bg_referencer ').each(function(index){
+			if (index != 3 ){
+				$(this).flip({
+					direction:'lr',
+						color    : '#ffffff',
+						content  : ' '
+				})	
+			}
+			
+	  })	  
+	  //$('#referencer-3').effect("transfer",{ to: $("#title-effect") }, 1000);
 	  
 	}
 	$(function(){

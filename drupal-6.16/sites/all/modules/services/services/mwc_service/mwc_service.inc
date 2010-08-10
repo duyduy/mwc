@@ -62,6 +62,50 @@ function mwc_service_contact_access() {
   return user_access('load node data');
 }
 
+
+function mwc_service_referencer($idTerm=0, $page=1) {  
+    // Need to known offet start and end
+    $offet_start = $offest_end = 0;
+    $num_of_page = 3;
+    $offet_start = ($page -1)*$num_of_page ;
+    
+    
+    $result = taxonomy_select_nodes(array($idTerm));
+    $items = array(); 
+    while ($row = db_fetch_object($result)) {
+            $items[] = $row->nid;
+    }
+    $offest_end = count($items);
+    if (($offet_start+$num_of_page -1) < $offest_end )
+                   $offest_end = $offet_start+$num_of_page -1 ;
+    // Get nodes
+    $nodes = array();
+    if ( $offet_start < $offest_end){
+        for($i=$offet_start;$i<=$offest_end;$i++){
+            $nodes[] = node_load($items[$i]);       
+        }
+    }
+    var_dump($nodes);
+    $result = array('idTerm'=> $idTerm , 'page'=>$page) ; 
+  
+
+  return $result;
+}
+
+/**
+ * Check if the user has the permission to get the
+ * node's data thru services.
+ *
+ * @param $nid
+ *   Number. The node ID.
+ * @return
+ *   Boolean. TRUE if the user has view access.
+ */
+function mwc_service_referencer_access() {
+  global $user;
+  return user_access('load node data');
+}
+
 /**
  * Returns a specified node.
  *
