@@ -4,6 +4,7 @@ description = Provides a node service.
 package = Services - services
 dependencies[] = services
 dependencies[] = node
+dependencies[] = node_service 
 core = 6.x
 ; Information added by drupal.org packaging script on 2010-05-17
 version = "6.x-2.2"

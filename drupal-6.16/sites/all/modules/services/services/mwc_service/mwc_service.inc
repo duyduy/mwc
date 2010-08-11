@@ -65,8 +65,8 @@ function mwc_service_contact_access() {
 
 function mwc_service_referencer($idTerm=0, $page=1) {  
     // Need to known offet start and end
-    $offet_start = $offest_end = 0;
-    $num_of_page = 3;
+    $offet_start = $offest_end = $pages = 0;
+    $num_of_page = 9;
     $offet_start = ($page -1)*$num_of_page ;
     
     
@@ -75,18 +75,21 @@ function mwc_service_referencer($idTerm=0, $page=1) {
     while ($row = db_fetch_object($result)) {
             $items[] = $row->nid;
     }
-    $offest_end = count($items);
+    $offest_end = $pages = count($items);
+    $pages      =  (int)($pages / $num_of_page)+1;        
     if (($offet_start+$num_of_page -1) < $offest_end )
                    $offest_end = $offet_start+$num_of_page -1 ;
     // Get nodes
     $nodes = array();
+    module_load_include('inc', 'node_service', 'node_service');
     if ( $offet_start < $offest_end){
         for($i=$offet_start;$i<=$offest_end;$i++){
-            $nodes[] = node_load($items[$i]);       
+            $nodes[] = node_service_get($items[$i],array("nid","type","language","status","title","field_image_small","field_image_big"));       
+       
         }
     }
-    var_dump($nodes);
-    $result = array('idTerm'=> $idTerm , 'page'=>$page) ; 
+    //var_dump($nodes);
+    $result = array('idTerm'=> $idTerm , 'page'=>$page,'pages'=>$pages,'nodes'=>$nodes) ; 
   
 
   return $result;

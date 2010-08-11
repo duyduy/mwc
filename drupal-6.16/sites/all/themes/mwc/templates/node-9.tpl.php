@@ -82,7 +82,8 @@
 ?>
 <?php
 $node_type = "profil"; 
-$result = db_query('SELECT n.nid , n.title FROM {node} n WHERE n.type = '."'$node_type'".' and n.status = 1 and n.language ="da"');
+global $language;
+$result = db_query('SELECT n.nid , n.title FROM {node} n WHERE n.type = '."'$node_type'".' and n.status = 1 and n.language ="'.$language->language.'"');
 $output_menu = '';
 while ($node = db_fetch_object($result))
 {    

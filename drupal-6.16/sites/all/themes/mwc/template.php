@@ -142,7 +142,7 @@ function mwc_preprocess_page(&$vars, $hook) {
   }
   
   $vars['secondary_html']= _mwc_main_2style($vars['secondary_links']);
-  //var_dump($vars['secondary_html']);
+  //var_dump($vars['node']);
 }
 function _mwc_get_root_template(){
   $directory     = drupal_get_path('theme','mwc');

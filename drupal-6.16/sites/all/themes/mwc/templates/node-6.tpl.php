@@ -82,7 +82,12 @@
   drupal_add_js($path ."/js/jquery.flip.min.js");
 ?>
 <?php
-
+ 	$taxmenu = "SELECT tid, name FROM {term_data} WHERE vid = 2 ORDER BY weight";
+	$result = db_query($taxmenu);
+	$terms  = array();
+	while ($data = db_fetch_object($result)) {
+		$terms[] = $data;	
+	}
 ?>
 <script  type="text/javascript" > 
 //  0. Init config 
@@ -92,56 +97,126 @@
 //  4.
 
 //----  0 -----------
-    var dataConfig = {} ;
-	function data_init(){
+    var term  = new Array();
+	var dataConfig = {} ;
+    var html_theme = {} ;
+    <?php
+	    $i = 0;
+		foreach($terms as $term ){
+			print "term[$i]={\"name\":\"".$term->name."\",\"tid\":".$term->tid."} ; \n" ;	
+			$i++;					
+		}
+	 ?>
+    dataConfig.term = term ;
+    html_theme.type1_header='<div class="bg_tt_kontakt">'+
+                                '<p class="title3 float_left">Referencer - Website design</p>' +
+                                '<span class="float_right"><a href="javascript:_extra_effect(null,1);"><img width="236" height="33" src="<?php print $directory_en ; ?>/css/img/bt_tilbage.jpg"/></a></span>'  +
+                                '<br class="clear"/>'
+                            '</div>';
+    html_theme.type1_block = '<div class="float_left line_left">' +
+                                '<div class="center p10t"><a href="#"><img src="img/img_website_1.jpg"/></a></div>'+
+                                '<div class="tt_b_logo">'+
+                                    '<div class="bg1_b_logo">'+
+                                        '<span><a href="#">Andersen Kurer</a></span>'+
+                                    '</div>'+
+                                '</div>'+
+                             '</div>';
+    html_theme.type1_paging = '<div class="box_pt p15b p15t"><ul></ul><br class="clear"/></div>';
+    dataConfig.html_theme   = html_theme;
+//------------End 0 -------------
+	
+	function data_init(){  
 		$('.bg_referencer ').each(function(index){
 			$(this).attr('id','referencer-'+index).find('a').each(function(sindex){
-				$(this).attr('id','a-referencer-'+sindex).click(function(){
-					 alert('abc');
-					 return false;
-				});
-			});
-			
+				$(this).attr('id','a-referencer-'+sindex);
+			});			
 		});		
+        $('.bg_referencer a').each(function(index){
+            $(this).bind('click',{term:dataConfig.term[index]},function(e){
+                     //alert(e.data.term.name);
+ 				     show_one_taxonomy(e.data.term.tid,1,0);
+                     return false;
+                });
+        });
 	}
 	function set_click_all_taxonomy(){
 	
 	}
 	function show_all_taxonomy(){}
-	function show_one_taxonomy(idTerm){
-		
+	function show_one_taxonomy(idTerm,page,type){
+           var data = {};
+           data.idTerm = idTerm;
+           data.page   = page;  
+           _get_all_nodes_in_term(data,type);	
+           
+           //$.each(data.nodes,function(index,node){
+           //    alert(node.nid);
+           //});	
 	}
-	function _get_all_nodes_in_term(data){
+	function _get_all_nodes_in_term(data,type_display){
         //var data = {};
         //data.idTerm = 2;
         //data.page   = 1;  
 	    Drupal.service('mwc.referencer',data,function(status, data) {
                if(status == false) {
                       alert("Fatal error: could not load content");
+                      
                }
                else {
-                   
-                        if (data.Task =='Contact-form'){ 
-                            $('#contact-div').hide('pulsate',options,500,function(){
-                                
-                                $('#contact-div').html(html_message).css('opacity',1).show('blind',options,1000);
-                            })
-                        }
-                        if (data.Task =='Bestil-information'){ 
-                            $('#bestil-div').hide('pulsate',options,500,function(){
-                                
-                                $('#bestil-div').html(html_message).css('opacity',1).show('blind',options,1000);
-                            })
-                        }
-                  
+                       render_refer(data,type_display);
+                                                          
                }
         });
 	}
+    function render_refer(data,type_display){
+        if (type_display == 0){
+            var header =  $('<div>'+dataConfig.html_theme.type1_header+'</div>');
+                $.each(dataConfig.term,function(i,term){
+                    if (term.tid == data.idTerm){                      
+                        header.find("p.title3").html(term.name);                       
+                    }    
+                })
+                //alert(header.html());   
+            
+            var block = $('<div>'+dataConfig.html_theme.type1_block+'</div>');
+            var html  ='';
+            var i_clear = 0;
+            $.each(data.nodes,function(index,node){
+                //alert(node.field_image_small[0].filepath);
+                block.find('img').attr('src',Drupal.settings.baseurl + node.field_image_small[0].filepath);
+                html += block.html();
+                i_clear ++; 
+                if (i_clear % 3 ==0){
+                    html += '<div class="line_right"></div>';
+                }
+            });
+			html += '<div class="clear"></div>';
+            
+            
+            html = '<div class="p15t">'+header.html()+html+'</div>';
+            
+            //$('#main').html(html);
+            _extra_effect(html,0);
+        }
+    }
 	function _get_nodes_reference(){}
 	//var data = {'index':0};
-	function _extra_effect(data){
+	function _extra_effect(data,effect_type){
 	  // Explore all category sub special category
-	  data.index = 3;
+      if (effect_type == 0){
+          // Change show all term to detail of term
+          $('#main').flip({direction:'lr',content:data,
+                           onEnd: function(){$("#main").removeAttr('style');}   
+                           });
+      }
+      if (effect_type== 1){
+          // Change show detail of term to all term 
+          
+          $('#main').flip({direction:'tb',content:dataConfig.html_all_term ,
+                           onEnd: function(){$("#main").removeAttr('style');data_init();}   
+                           });
+      }
+	  /*data.index = 3;
 	  $('.bg_referencer ').each(function(index){
 			if (index != 3 ){
 				$(this).flip({
@@ -151,12 +226,15 @@
 				})	
 			}
 			
-	  })	  
+	  })	
+      */  
 	  //$('#referencer-3').effect("transfer",{ to: $("#title-effect") }, 1000);
 	  
 	}
+
 	$(function(){
 		data_init();
+        dataConfig.html_all_term = $('#main').html();
 	});
 //-----0  ------------
 
