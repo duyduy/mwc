@@ -98,6 +98,7 @@
 
 //----  0 -----------
     var term  = new Array();
+    var term_special_stt = new Array(4,5,6,7);
 	var dataConfig = {} ;
     var html_theme = {} ;
     <?php
@@ -108,6 +109,7 @@
 		}
 	 ?>
     dataConfig.term = term ;
+    dataConfig.term_special_stt = term_special_stt ;
     html_theme.type1_header='<div class="bg_tt_kontakt">'+
                                 '<p class="title3 float_left">Referencer - Website design</p>' +
                                 '<span class="float_right"><a href="javascript:_extra_effect(null,1);"><img width="236" height="33" src="<?php print $directory_en ; ?>/css/img/bt_tilbage.jpg"/></a></span>'  +
@@ -121,22 +123,53 @@
                                     '</div>'+
                                 '</div>'+
                              '</div>';
-    html_theme.type1_paging = '<div class="box_pt p15b p15t"><ul></ul><br class="clear"/></div>';
+    html_theme.type1_paging = '<div id="paging" class="box_pt p15b p15t"><ul></ul><br class="clear"/></div>';
+    html_theme.type2_header ='<div class="box_menurefarence">' +
+                                '<div class="box_iconrefarence w190 float_left box_boder_right m10r p20l">' +
+                                    '<img src="<?php print $directory_en ; ?>/css/img/icon_logodesign.png" /> ' +
+                                    '<span class="box_iconrefarence_tt current"><a href="referencer_logo.html">Logo design </a></span>'+
+                                    '<br class="clear" /> '  +
+                                '</div>'               +
+                                '<div class="box_iconrefarence w220 float_left box_boder_right m10r p20l">' +
+                                    '<img src="<?php print $directory_en ; ?>/css/img/icon_brochuredesign.png" />'  +
+                                    '<span class="box_iconrefarence_tt"><a href="referencer_brochure.html">Brochure design</a></span>' +
+                                    '<br class="clear" />' +
+                                '</div>'  +
+                                '<div class="box_iconrefarence w220 float_left box_boder_right m10r p20l">'+
+                                    '<img src="<?php print $directory_en ; ?>/css/img/icon_visitcaredesign.png"/> '+
+                                    '<span class="box_iconrefarence_tt"><a href="referencer_visitkort.html">Visitkort design</a></span>'+
+                                    '<br class="clear" />'+
+                                ' </div>' +
+                                '<div class="box_iconrefarence w190 float_left p20l"> '+
+                                    '<img src="<?php print $directory_en ; ?>/css/img/icon_bannerdesign.png"  />'+
+                                    '<span class="box_iconrefarence_tt"><a href="referencer_banner.html">Banner design </a></span>'+
+                                    '<br class="clear" />'+
+                                '</div> ' +
+                                '<div class="clear"></div>' +
+                              '</div>';
     dataConfig.html_theme   = html_theme;
+    
 //------------End 0 -------------
 	
 	function data_init(){  
 		$('.bg_referencer ').each(function(index){
-			$(this).attr('id','referencer-'+index).find('a').each(function(sindex){
-				$(this).attr('id','a-referencer-'+sindex);
-			});			
-		});		
+			$(this).attr('id','referencer-'+index);
+		});	
+        	
         $('.bg_referencer a').each(function(index){
+            
             $(this).bind('click',{term:dataConfig.term[index]},function(e){
                      //alert(e.data.term.name);
- 				     show_one_taxonomy(e.data.term.tid,1,0);
+                     if ($(this).hasClass('a-special')){
+                        show_one_taxonomy(e.data.term.tid,1,3);
+                     }else{   
+ 				        show_one_taxonomy(e.data.term.tid,1,0);
+                     }
                      return false;
                 });
+            if (jQuery.inArray(index, dataConfig.term_special_stt) > -1){  
+                $(this).addClass('a-special'); 
+            }
         });
 	}
 	function set_click_all_taxonomy(){
@@ -169,22 +202,23 @@
         });
 	}
     function render_refer(data,type_display){
-        if (type_display == 0){
+        var data_html = {};
+        if (type_display == 0 || type_display == 2 || type_display == 3 || type_display == 4 ){
             var header =  $('<div>'+dataConfig.html_theme.type1_header+'</div>');
                 $.each(dataConfig.term,function(i,term){
                     if (term.tid == data.idTerm){                      
                         header.find("p.title3").html(term.name);                       
                     }    
-                })
-                //alert(header.html());   
-            
+                })           
             var block = $('<div>'+dataConfig.html_theme.type1_block+'</div>');
             var html  ='';
             var i_clear = 0;
             $.each(data.nodes,function(index,node){
-                //alert(node.field_image_small[0].filepath);
-                block.find('img').attr('src',Drupal.settings.baseurl + node.field_image_small[0].filepath);
-                html += block.html();
+                //alert(node.field_image_small[0].filepath);  
+                //alert(index);
+                if (node.field_image_small)
+                    block.find('img').attr('src',Drupal.settings.baseurl + node.field_image_small[0].filepath);
+                html += block.html();  
                 i_clear ++; 
                 if (i_clear % 3 ==0){
                     html += '<div class="line_right"></div>';
@@ -192,22 +226,58 @@
             });
 			html += '<div class="clear"></div>';
             
+            var paging = $('<div>'+dataConfig.html_theme.type1_paging+'</div>');
+            var i ;   
+            for (i=1;i<=data.pages;i++){ 
+                if ( i == data.page){
+                    paging.find('ul').append("<li class=\"current\" ><a href='#'>"+i+"</li></a>"); 
+                }else{
+                    j=2;
+                    if (type_display == 4 || type_display ==3 ) j=4;
+                        
+                    paging.find('ul').append("<li><a href='javascript:show_one_taxonomy(" +data.idTerm+","+i+","+j+");'>"+i+"</li></a>");
+                }
+            }
+
+            data_html.header  =   header.html();
+            data_html.block   =   html         ;
+            data_html.paging  =   paging.html();
             
-            html = '<div class="p15t">'+header.html()+html+'</div>';
+            //html = '<div class="p15t">'+header.html()+html+paging.html()+'</div>';
             
             //$('#main').html(html);
-            _extra_effect(html,0);
-        }
+            
+        } 
+        _extra_effect(data_html,type_display); 
     }
 	function _get_nodes_reference(){}
 	//var data = {'index':0};
 	function _extra_effect(data,effect_type){
 	  // Explore all category sub special category
-      if (effect_type == 0){
+      
+      //alert(data);
+      if (effect_type == 0 ){                           
           // Change show all term to detail of term
-          $('#main').flip({direction:'lr',content:data,
+          /*$('#main').flip({direction:'lr',content:'<div class="p15t">'+data.header+data.block+data.paging+'</div>',
+                           onBefore: function(){},
                            onEnd: function(){$("#main").removeAttr('style');}   
                            });
+          */
+          $('#main').height($('#main').height());
+          $('#main > .bg_referencer').each(function(index){
+              if ( index == 0) {
+               $(this).hide('clip',{},510,function(){
+                       
+                       $('#main').html(data.header+'<div class="p15t" style="display:none;">'+data.block+data.paging+'</div>');
+                       $('#main > .p15t').show('explode',{},500,function(){
+                           $("#main").removeAttr('style');
+                       }); 
+               });
+              }else{
+               $(this).hide('clip',{},500);
+              }
+          })
+          
       }
       if (effect_type== 1){
           // Change show detail of term to all term 
@@ -215,6 +285,30 @@
           $('#main').flip({direction:'tb',content:dataConfig.html_all_term ,
                            onEnd: function(){$("#main").removeAttr('style');data_init();}   
                            });
+      }
+      if (effect_type == 2){
+          // Show paging 
+          $("#main").html('<div class="p15t">'+data.header+data.block+data.paging+'</div>');
+      }
+      if (effect_type == 3){          
+           $('#main').flip({direction:'lr',content:'<div class="p15t">'+data.header+data.block+data.paging+'</div>',
+                           onEnd: function(){$("#main").removeAttr('style');
+                                              //alert('b');
+                                              special_header = $('<div>'+html_theme.type2_header+'</div>');
+                                              special_header.find(".box_menurefarence").hide();
+                                              $("#main > div.p15t").find('.bg_tt_kontakt').after(special_header.html());
+                                              $('.box_menurefarence').show('blind');
+                                            }  
+                           });
+          // add more header
+      }
+      if (effect_type == 4){
+          $('#main > .p15t').height($('#main > .p15t').height());
+          $('#main > .p15t > .line_left ').hide();
+          $('#main > .p15t > .line_right ').hide(); 
+          $('#main > .p15t > .clear ').hide();
+          $('#main > .p15t > .box_menurefarence').after(data.block); 
+          
       }
 	  /*data.index = 3;
 	  $('.bg_referencer ').each(function(index){
