@@ -109,7 +109,7 @@
  * @see zen_process()
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
@@ -117,8 +117,222 @@
   <?php print $head; ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body class="<?php print $classes; ?>">
+
+<!-- begin: #Page -->
+<div id="page">
+	<!-- begin: #Page_margin -->
+	<div id="page_margin">
+    <!-- begin: #Page_bot -->
+	<div id="page_bot">
+    	<!-- begin: #tipeven -->
+    	<div class="tipeven">
+        <form action="" id="tell-a-friend-form" > 
+            <div id="tell-a-friend">
+            	<div id="tell-a-friend-child" style="display:none">
+                <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. </p>
+                <input name="tellAFriend"  type="text" value="Indtast Email Adresse......" class="input1 required email" /><br />
+                <a href="#" id="button-tell-a-friend-child"><img src="<?php print $directory_en ; ?>/css/img/bt_send.png" alt="" /></a>
+                </div>
+            </div>
+            <div class="float_left">
+                <a href="#" onClick="showSlidingDiv(); return false;"><img src="<?php print $directory_en ; ?>/css/img/tt_tipenven.png" alt="" /></a>
+            </div>
+            <div class="clear_left"></div>
+            </form>
+        </div>
+        <!-- end: #tipeven -->
+        <!-- begin: #nyhedesbrev -->
+    	<div class="nyhedesbrev">
+           <form action="" id="newsletter-form" >   
+            <div id="slidingDiv1">
+            	<div id="slidingDiv_child1" style="display:none">
+                <p>Jeg vil til-/afmelde mig My Web Creations nsnyhedsbrev:</p>
+                <input type="text" name="newsletter" value="Indtast Din Email Adresse......" class="input1 required email" /><br />
+                <a href="#" id="button-newsletter-reg"><img src="<?php print $directory_en ; ?>/css/img/bt_tilmeld.png" alt="" /></a>
+                <a href="#" id="button-newsletter-not-reg"><img src="<?php print $directory_en ; ?>/css/img/bt_afmeld.png" alt="" /></a>
+                </div>
+            </div>
+            <div class="float_left">
+                <a href="#" onClick="showSlidingDiv1(); return false;"><img src="<?php print $directory_en ; ?>/css/img/bt_nyhedesbrev.png" alt="" /></a>
+            </div>
+            <div class="clear_left"></div>
+           </form>
+        </div>
+        <!-- end: #nyhedesbrev -->
+        <!-- begin: #feedback -->
+    	<div class="feedback">
+        	<a href="feedback.html"><img src="<?php print $directory_en ; ?>/css/img/tt_feedback.png" alt="" /></a>
+        </div>
+        <!-- end: #feedback -->
+        <!-- begin: #kontakt -->
+    	<div class="kontakt">
+        	<a href="kontakt.html"><img src="<?php print $directory_en ; ?>/css/img/tt_kontakt.png" alt="" /></a>
+        </div>
+        <!-- end: #kontakt -->
+        <!-- begin: #livesupport -->
+    	<div class="livesupport">
+        	<a href="#"><img src="<?php print $directory_en ; ?>/css/img/tt_livesupport.png" alt="" /></a>
+        </div>
+        <!-- end: #livesupport -->
+        <!-- begin: #sitemap -->
+    	<div class="sitemap">
+        	<a href="sitemap.html"><img src="<?php print $directory_en ; ?>/css/img/bt_sitemap.png" alt="" /></a>
+        </div>
+        <!-- end: #sitemap -->
+        <!-- begin: #skype -->
+    	<div class="skype">
+            <div id="slidingDiv2">
+            	<div id="slidingDiv_child2" style="display:none">
+                <div class="bd1b p15t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="<?php print $directory_en ; ?>/css/img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Kim Hau Tran</a><br />
+                        Director
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="bd1b p10t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="<?php print $directory_en ; ?>/css/img/skype_off.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">My Linh Lao</a><br />
+                        Director
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="bd1b p10t p10b">
+                	<div class="float_left m5l"><a href="#"><img src="<?php print $directory_en ; ?>/css/img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Truong Phuc To</a><br />
+                        Office Manager
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                <div class="p10t">
+                	<div class="float_left m5l"><a href="#"><img src="<?php print $directory_en ; ?>/css/img/skype_ol.png" alt="" /></a></div>
+                    <div class="float_left m10l">
+                    	<a href="#">Van Trung Huynh</a><br />
+                        Design Leader
+                    </div>
+                    <div class="clear_left"></div>
+                </div>
+                </div>
+            </div>
+            <div class="float_right">
+                <a href="#" onClick="showSlidingDiv2(); return false;"><img src="<?php print $directory_en ; ?>/css/img/skype.png" alt="" /></a>
+            </div>
+            <div class="clear_right"></div>
+        </div>
+        <!-- end: #skype -->
+        <!-- begin: #Flag -->
+    	<div class="flag">
+            <a href="#"><img src="<?php print $directory_en ; ?>/css/img/flag.jpg" alt="" /></a>
+        </div>
+        <!-- end: #Flag -->
+        <!-- begin: #Header -->
+        <div id="header">
+            <div class="logo"><a href="index.html" class="current"><img src="<?php print $directory_en ; ?>/css/img/logo.png" alt="" /></a></div>
+            <div class="card">
+            	<div class="card_shop1"><img src="<?php print $directory_en ; ?>/css/img/card_shop.jpg" alt="" /></div>
+                <p class="p5t blue">
+                	<img src="<?php print $directory_en ; ?>/css/img/icon.png" alt="" />
+                    <a href="indkobskurven.html"><b>Indkøbskurven</b></a>
+                </p>
+                <p class="p5t">
+                	Du har : <span class="blue">0</span>&nbsp;&nbsp; | &nbsp;
+                    Total :  <span class="blue">DKK 3495,- </span>
+                </p>
+            </div>
+            <div class="card m10r">
+            	<div class="card_shop1"><img src="<?php print $directory_en ; ?>/css/img/card_shop1.png" alt="" /></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- end: #Header -->
+        <!-- begin: #Navigation -->
+        <div id="navi">
+            <?php print $secondary_html; ?>    
+            <div class="clear_left"></div>
+        </div>
+        <!-- end: #Navigation -->
+        <!-- begin: #flash -->
+        
+        <!-- end: #flash -->
+        <!-- begin: #banner -->
+        <div class="banner_top">
+        	<img src="<?php print $directory_en; ?>/css/img/img_kontakt.jpg" alt="" />
+        </div>
+		<?php //print $content_top; ?>
+		
+        <!-- end: #banner -->
+        <!-- begin: #Main -->
+		<?php print $content; ?>
+        
+        <!-- end: #Main -->
+    </div>
+	<!-- end: #Page_bot -->
+    </div>
+	<!-- end: #Page_margin -->
+    <div id="bg_main_bot">
+    	<div class="w950">
+        	<div class="bg_col1">
+            	<p class="title">Vedrører kategori</p>
+                <ul class="list_2">
+                	<li><a href="referencer_logo.html">- Logo design</a></li>
+                    <li><a href="referencer_brochure.html">- Brochure</a></li>
+                    <li><a href="referencer_banner.html">- Banner</a></li>
+                    <li><a href="referencer_flashbanner.html">- Flashbanner</a></li>
+                    <li style="border:none;"><a href="referencer_visitkort.html">- Visitkort</a></li>
+                </ul>
+            </div>
+            <div class="bg_col1 m10l">
+            	<p class="title">Teknologi beskrivelse</p>
+                <ul class="list_2">
+                	<li><a href="kompetencer.html#teknologi">- Joomla</a></li>
+                    <li><a href="kompetencer.html#teknologi">- CodeInigter</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Zend Framwork</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Prado</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Drupal</a></li>
+                    <li><a href="kompetencer.html#teknologi">- OpenCart</a></li>
+                    <li><a href="kompetencer.html#teknologi">- Wordpress</a></li>
+                	<li style="border:none;"><a href="kompetencer.html#teknologi">- Magento</a></li>
+                </ul>
+            </div>
+            <div class="bg_col1 m10l">
+            	<p class="title">Design</p>
+                <ul class="list_2">
+                	<li><a href="kompetencer.html#design">- Adobe Photoshop</a></li>
+                    <li><a href="kompetencer.html#design">- Dreamweaver</a></li>
+                    <li><a href="kompetencer.html#design">- Adobe Illustration</a></li>
+                    <li><a href="kompetencer.html#design">- CorelDraw</a></li>
+                    <li><a href="kompetencer.html#design">- Flash</a></li>
+                    <li style="border:none;"><a href="kompetencer.html#design">- Html</a></li>
+                </ul>
+            </div>
+            <div class="w290 float_right">
+            	<div class="bd1b p10b"><img src="<?php print $directory_en ; ?>/css/img/tt_lej.png" alt="" /></div>
+                <div class="bg_text_1">
+                	<p class="p10t">
+                    	Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrienLorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en.
+                    </p>
+                    <div class="m10t"><a href="produkter_webfreelancere.html" class="button2"></a></div>
+                	<div class="img_ab"><img src="<?php print $directory_en ; ?>/css/img/icon_ps.png" alt="" /></div>
+                </div>
+                <div class="clear_right"></div>
+            </div>
+            <div class="clear"></div>            
+        </div>
+    </div>
+    <!-- begin: #Footer -->
+    <div id="footer">
+    	<div class="w950">
+            Copyright © 2010 <a href="http://www.mywebcreations.dk" target="_blank">MYWEBCREATIONS.DK.</a> All rights reserved.
+        </div>
+    </div>
+    <!-- end: #Footer -->
+</div>
+<!-- end: #Page -->
 
   <?php if ($primary_links): ?>
     <div id="skip-link"><a href="#main-menu"><?php print t('Jump to Navigation'); ?></a></div>
@@ -180,10 +394,10 @@
         <?php endif; ?>
         <?php print $help; ?>
 
-        <?php print $content_top; ?>
+        
 
         <div id="content-area">
-          <?php print $content; ?>
+          
         </div>
 
         <?php print $content_bottom; ?>
@@ -193,7 +407,11 @@
         <?php endif; ?>
 
       </div></div> <!-- /.section, /#content -->
-
+      
+	  <?php  print_r($secondary_links);
+			
+          ?>
+		  
       <?php if ($primary_links || $navigation): ?>
         <div id="navigation"><div class="section clearfix">
 
